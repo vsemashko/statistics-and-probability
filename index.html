@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistics and probability</title>
+    <script src="src/probability.js"></script>
+</head>
+<body>
+<ul id="result"></ul>
+<div id="output"></div>
+<script>
+    let result =document.getElementById('result');
+    let output =document.getElementById('output');
+
+    let arr = [
+        ...fill(4, 21),
+        ...fill(6, 24),
+        ...fill(7, 26),
+        ...fill(11, 29),
+        ...fill(2, 40)
+    ];
+    output.textContent = round(confidenceInterval(arr))
+    /*let distribution = getProbabilityForEachOutcome(11, 0.8);
+
+     distribution.forEach((outcome, i) => {
+     let el = document.createElement('li');
+     el.textContent = `${i}: ${outcome}`;
+     result.appendChild(el)
+     });*/
+</script>
+</body>
+</html>
