@@ -34,6 +34,12 @@ function confidenceInterval(arr, approx = 1.96) {
     return approx * Math.sqrt(variance(arr) / arr.length)
 }
 
+function testNullHypothesis(arr, hyp) {
+    let mu = mean(arr);
+    let ci = confidenceInterval(arr);
+    return Math.abs(hyp - mu) <= ci;
+}
+
 function getProbabilityForEachOutcome(n, pH) {
     let result = [];
     for (let i = 0; i < n; i++) {

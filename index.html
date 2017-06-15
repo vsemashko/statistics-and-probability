@@ -9,8 +9,8 @@
 <ul id="result"></ul>
 <div id="output"></div>
 <script>
-    let result =document.getElementById('result');
-    let output =document.getElementById('output');
+    let result = document.getElementById('result');
+    let output = document.getElementById('output');
 
     let arr = [
         ...fill(4, 21),
@@ -19,7 +19,7 @@
         ...fill(11, 29),
         ...fill(2, 40)
     ];
-    output.textContent = round(confidenceInterval(arr))
+    output.textContent = testNullHypothesis(arr,26);
     /*let distribution = getProbabilityForEachOutcome(11, 0.8);
 
      distribution.forEach((outcome, i) => {
