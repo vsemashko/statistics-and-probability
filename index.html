@@ -19,6 +19,15 @@
         ...fill(11, 29),
         ...fill(2, 40)
     ];
+
+    let points = [
+        {x: 3, y: 8},
+        {x: 4, y: 3},
+        {x: 5, y: 7}
+    ];
+    console.log(calculateLinearRegression(points));
+    console.log(calculateCorrelationR(points));
+
     output.textContent = testNullHypothesis(arr,26);
     /*let distribution = getProbabilityForEachOutcome(11, 0.8);
 

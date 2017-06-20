@@ -1,5 +1,7 @@
 function sum(arr) {
-    return arr.reduce((sum, i) => { return sum + i; }, 0);
+    return arr.reduce((sum, i) => {
+        return sum + i;
+    }, 0);
 }
 
 function mean(arr) {
@@ -46,6 +48,42 @@ function getProbabilityForEachOutcome(n, pH) {
         result.push(round(probability(n, i, pH), 3))
     }
     return result;
+}
+
+/**
+ * For set of points {x,y} calculate best matching line between them
+ * Finds a and b in linear equation y = bx + a
+ *
+ * @param points array of points {x,y}
+ * @returns {{a: number, b: number}} Returns object with {a, b} values
+ */
+function calculateLinearRegression(points) {
+    let x = points.map(p => p.x);
+    let y = points.map(p => p.y);
+    let xMean = mean(x);
+    let yMean = mean(y);
+    let variance = points.reduce((sum, p) => sum + (p.x - xMean) * (p.y - yMean), 0);
+    let normalizer = x.reduce((sum, i) => sum + Math.pow(i - xMean, 2), 0);
+    let b = variance / normalizer;
+    let a = yMean - b * xMean;
+    return {a, b};
+}
+
+/**
+ *
+ * @param points array of points {x,y}
+ * @returns number value r in between range [-1; 1]
+ */
+function calculateCorrelationR(points) {
+    let x = points.map(p => p.x);
+    let y = points.map(p => p.y);
+    let xMean = mean(x);
+    let yMean = mean(y);
+    let variance = points.reduce((sum, p) => sum + (p.x - xMean) * (p.y - yMean), 0);
+    let xNormalizer = x.reduce((sum, xi) => sum + Math.pow(xi - xMean, 2), 0);
+    let yNormalizer = y.reduce((sum, yi) => sum + Math.pow(yi - yMean, 2), 0);
+    let normalizer = Math.sqrt(xNormalizer * yNormalizer);
+    return variance / normalizer;
 }
 
 /////////// UTILS ////////////////
