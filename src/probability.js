@@ -86,6 +86,10 @@ function calculateCorrelationR(points) {
     return variance / normalizer;
 }
 
+function delta(xt, xt1) {
+    return (xt - xt1) / xt
+}
+
 /////////// UTILS ////////////////
 
 function factorial(n, k = 0) {
